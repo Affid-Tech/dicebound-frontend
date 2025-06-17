@@ -3,9 +3,9 @@ import {Alert, Box, Button, CircularProgress, Container, Stack, Typography} from
 import {DatePicker, LocalizationProvider} from "@mui/x-date-pickers";
 import {AdapterDayjs} from "@mui/x-date-pickers/AdapterDayjs";
 import dayjs, {Dayjs} from "dayjs";
-import ScheduleList from "./ScheduleList";
-import {fetchSchedule} from "../api/schedule";
-import type {ScheduleSessionDto} from "../types/ScheduleSessionDto";
+import ScheduleList from "../components/Schedule/ScheduleList.tsx";
+import {fetchSchedule} from "../api/schedule.ts";
+import type {ScheduleSessionDto} from "../types/ScheduleSessionDto.ts";
 
 export default function SchedulePage() {
     const [sessions, setSessions] = useState<ScheduleSessionDto[]>([]);
@@ -46,8 +46,6 @@ export default function SchedulePage() {
 
     return (
         <Box sx={{
-            minHeight: "100vh",
-            background: "linear-gradient(135deg, #1B1033 0%, #003A41 100%)",
             py: 5,
         }}>
             <Container maxWidth="lg">

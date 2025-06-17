@@ -4,9 +4,9 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const DESCRIPTION_PREVIEW_LENGTH = 90;
 
-type Props = { description?: string | null };
+type Props = { description?: string | null, keyVal: string };
 
-export default function ExpandableDescription({ description }: Props) {
+export default function ExpandableDescription({ description, keyVal }: Props) {
     const [expanded, setExpanded] = useState(false);
 
     if (!description) return null;
@@ -54,7 +54,7 @@ export default function ExpandableDescription({ description }: Props) {
 
             {/* Анимация будет мягкой, но цвет и стиль всегда одинаковые */}
             {hasLongDescription && (
-                <Collapse in={expanded} timeout="auto" unmountOnExit>
+                <Collapse key={keyVal} in={expanded} timeout="auto" unmountOnExit>
                     {/* ничего не нужно: уже показан полный текст выше */}
                 </Collapse>
             )}

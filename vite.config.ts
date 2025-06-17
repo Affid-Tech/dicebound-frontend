@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
+    port: 3000,
     proxy: {
       // Прокси для всех запросов на /api → твой Spring Boot
       '/api': 'http://localhost:8081', // или порт, где у тебя бекенд

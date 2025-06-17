@@ -1,10 +1,9 @@
-import {Box, Card, CardContent, Chip, Stack, Tooltip, Typography} from "@mui/material";
+import {Card, CardContent, Chip, Link, Stack, Tooltip, Typography} from "@mui/material";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import PersonIcon from "@mui/icons-material/Person";
 import CasinoIcon from "@mui/icons-material/Casino";
-import SignUpButton from "./SignUpButton";
-import type {ScheduleSessionDto} from "../types/ScheduleSessionDto";
-import ExpandableDescription from "./ExpandableDescription.tsx";
+import type {ScheduleSessionDto} from "../../types/ScheduleSessionDto.ts";
+import ExpandableDescription from "../ui/ExpandableDescription.tsx";
 
 type Props = { session: ScheduleSessionDto };
 
@@ -15,6 +14,28 @@ const formatDateTime = (iso: string) => {
         hour: "2-digit", minute: "2-digit",
     });
 };
+
+function getTimeAndDateLink(
+    title: string,
+    startIso: string, // формат: 2025-06-21T10:00:00+02:00
+    durationHours?: number
+) {
+    // msg: текст заголовка
+    // iso: в формате YYYYMMDDTHHmm
+    // ah: duration (optional)
+    const start = new Date(startIso);
+    const isoDate = start
+        .toISOString()
+        .replace(/[-:]/g, "")
+        .slice(0, 13); // YYYYMMDDTHHMM
+
+    const msg = encodeURIComponent(title);
+    const iso = isoDate; // уже формат YYYYMMDDTHHMM
+    const ah = durationHours ? `&ah=${durationHours}` : "";
+
+    return `https://www.timeanddate.com/worldclock/fixedtime.html?msg=${msg}&iso=${iso}${ah}`;
+}
+
 
 const typeLabel = (type: string) =>
     type === "ONESHOT"
@@ -73,7 +94,7 @@ export default function ScheduleCard({ session }: Props) {
                     <Stack direction="row" alignItems="center" spacing={1}>
                         <AccessTimeIcon fontSize="small" />
                         <Typography variant="body2">
-                            {formatDateTime(session.startTime)} · {session.durationHours} ч.
+                            <Link href={getTimeAndDateLink(session.adventureTitle, session.startTime, session.durationHours)} color="text.primary" underline="hover" target="_blank" sx={{ fontWeight: 600 }}>{formatDateTime(session.startTime)} · {session.durationHours} ч.</Link>
                         </Typography>
                     </Stack>
 
@@ -87,28 +108,9 @@ export default function ScheduleCard({ session }: Props) {
                     </Stack>
 
                     {/* Описание с кнопкой "развернуть" */}
-                    <ExpandableDescription description={session.description} />
+                    <ExpandableDescription description={session.description} keyVal={session.sessionId}/>
                 </Stack>
             </CardContent>
-
-            {/* Нижний блок всегда внизу карточки */}
-            <Box
-                sx={{
-                    display: "flex",
-                    alignItems: "center",
-                    px: 2.5,
-                    pb: 2,
-                    pt: 0.5,
-                    mt: "auto",
-                }}
-            >
-                <Typography variant="body2" sx={{ fontWeight: 700 }}>
-                    Игроков: {session.minPlayers}–{session.maxPlayers}
-                </Typography>
-                <Box sx={{ ml: "auto" }}>
-                    <SignUpButton signupLink={session.signupLink} />
-                </Box>
-            </Box>
         </Card>
     );
 }

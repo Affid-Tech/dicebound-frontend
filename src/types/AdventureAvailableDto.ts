@@ -1,16 +1,15 @@
 import type {DmShortDto} from "./DmShortDto.ts";
 
-export interface ScheduleSessionDto {
-    sessionId: string;
+export interface AdventureAvailableDto {
     adventureId: string;
-    adventureTitle: string;
-    type: string;
+    title: string;
+    coverUrl: string;
     gameSystem: string;
     dm: DmShortDto;
-    startTime: string;
-    durationHours: number;
+    description?: string | null;
+    priceTokens?: number | null;
+    freeSeats: number;
     minPlayers: number;
     maxPlayers: number;
-    description?: string;
     signupLink?: string | null;
 }
