@@ -1,5 +1,5 @@
-import { AppBar, Toolbar, Typography, Button, Stack } from "@mui/material";
-import { Link, useLocation } from "react-router-dom";
+import {AppBar, Button, Stack, Toolbar} from "@mui/material";
+import {Link, useLocation} from "react-router-dom";
 
 export default function NavigationBar() {
     const location = useLocation();
@@ -15,9 +15,9 @@ export default function NavigationBar() {
             }}
         >
             <Toolbar sx={{ py: 1, px: 3, display: "flex", justifyContent: "space-between" }}>
-                <Typography variant="h5" sx={{ fontWeight: 700, fontFamily: "Exo 2" }}>
-                    Digital Dicebound
-                </Typography>
+                <Link to="/" style={{ padding: 0, display: "inline-flex" }}>
+                    <img src={"/white-letter-logo.png"} style={{ margin: 0, padding: 0, height: 64}} />
+                </Link>
                 <Stack direction="row" spacing={2}>
                     <Button
                         component={Link}
