@@ -108,7 +108,7 @@ export default function ScheduleCard({ session }: Props) {
                     </Stack>
 
                     {/* Описание с кнопкой "развернуть" */}
-                    <ExpandableDescription description={session.description} keyVal={session.sessionId}/>
+                    <ExpandableDescription description={session.description}/>
                 </Stack>
             </CardContent>
         </Card>

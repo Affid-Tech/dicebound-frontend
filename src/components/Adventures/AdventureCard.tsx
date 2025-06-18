@@ -31,7 +31,7 @@ export default function AdventureCard({ adventure, currency, ratio }: Props) {
                     <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 700 }}>
                         {adventure.gameSystem} · DM: {adventure.dm.name}
                     </Typography>
-                    <ExpandableDescription description={adventure.description} keyVal={adventure.adventureId} />
+                    <ExpandableDescription description={adventure.description} />
                     <Typography variant="body2" sx={{ mt: 1 }}>
                         <b>Цена: </b>
                         {priceInCurrency && (
