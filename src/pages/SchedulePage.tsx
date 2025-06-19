@@ -50,10 +50,7 @@ export default function SchedulePage() {
         }}>
             <Container maxWidth="lg">
                 <Typography variant="h1" color="accentLavender.main" gutterBottom>
-                    Расписание игр
-                </Typography>
-                <Typography variant="h4" color="text.secondary" sx={{ mb: 3 }}>
-                    Присоединяйся к приключению!
+                    Расписание игровых сессий
                 </Typography>
 
                 <LocalizationProvider dateAdapter={AdapterDayjs}>

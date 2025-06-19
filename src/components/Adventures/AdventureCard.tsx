@@ -1,6 +1,7 @@
-import {Card, CardContent, Typography, Stack, Box, Button, CardMedia} from "@mui/material";
+import {Card, CardContent, Typography, Stack, Box, Button, CardMedia, Chip} from "@mui/material";
 import type { AdventureAvailableDto } from "../../types/AdventureAvailableDto.ts";
 import ExpandableDescription from "../ui/ExpandableDescription.tsx";
+import {typeColor, typeLabel, typeSx} from "./AdventureTypeUtils.ts";
 
 type Props = {
     adventure: AdventureAvailableDto;
@@ -28,9 +29,17 @@ export default function AdventureCard({ adventure, currency, ratio }: Props) {
                     <Typography variant="h3" color="accentLavender.main">
                         {adventure.title}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ fontWeight: 700 }}>
-                        {adventure.gameSystem} · DM: {adventure.dm.name}
-                    </Typography>
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                        <Typography variant="body2" color="text.secondary" sx={{fontWeight: 700}}>
+                            {adventure.gameSystem} · DM: {adventure.dm.name}
+                        </Typography>
+                        <Chip
+                            size="small"
+                            label={typeLabel(adventure.type)}
+                            color={typeColor(adventure.type)}
+                            sx={{ ml: 1, fontWeight: 600, ...typeSx(adventure.type) }}
+                        />
+                    </Stack>
                     <ExpandableDescription description={adventure.description} />
                     <Typography variant="body2" sx={{ mt: 1 }}>
                         <b>Цена: </b>

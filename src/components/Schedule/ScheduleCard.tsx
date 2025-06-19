@@ -4,6 +4,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import CasinoIcon from "@mui/icons-material/Casino";
 import type {ScheduleSessionDto} from "../../types/ScheduleSessionDto.ts";
 import ExpandableDescription from "../ui/ExpandableDescription.tsx";
+import {typeColor, typeLabel, typeSx} from "../Adventures/AdventureTypeUtils.ts";
 
 type Props = { session: ScheduleSessionDto };
 
@@ -35,26 +36,6 @@ function getTimeAndDateLink(
 
     return `https://www.timeanddate.com/worldclock/fixedtime.html?msg=${msg}&iso=${iso}${ah}`;
 }
-
-
-const typeLabel = (type: string) =>
-    type === "ONESHOT"
-        ? "Oneshot"
-        : type === "MULTISHOT"
-            ? "Multishot"
-            : "Campaign";
-
-const typeColor = (type: string) =>
-    type === "ONESHOT"
-        ? "secondary"
-        : type === "MULTISHOT"
-            ? "warning"
-            : "primary";
-
-const typeSx = (type: string) =>
-    type === "MULTISHOT"
-        ? { background: "#FFA857", color: "#1B1033" }
-        : {};
 
 export default function ScheduleCard({ session }: Props) {
     return (

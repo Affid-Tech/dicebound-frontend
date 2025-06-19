@@ -4,6 +4,7 @@ export interface AdventureAvailableDto {
     adventureId: string;
     title: string;
     coverUrl: string;
+    type: string;
     gameSystem: string;
     dm: DmShortDto;
     description?: string | null;
