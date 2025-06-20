@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { Grid, Box, Typography, Stack, CircularProgress, Alert, Container } from "@mui/material";
-import { CurrencySelector } from "../components/ui/CurrencySelector";
-import type { AdventureAvailableDto } from "../types/AdventureAvailableDto";
+import {useEffect, useState} from "react";
+import {Alert, Box, CircularProgress, Container, Grid, Stack, Typography} from "@mui/material";
+import {CurrencySelector} from "../components/ui/CurrencySelector";
+import type {AdventureAvailableDto} from "../types/AdventureAvailableDto";
 import AdventureCard from "../components/Adventures/AdventureCard";
-import { fetchCurrencyRates } from "../api/currencyRate";
-import { fetchAvailableAdventures } from "../api/adventure";
-import type { CurrencyRateDto } from "../types/CurrencyRateDto";
+import {fetchCurrencyRates} from "../api/currencyRate";
+import {fetchAvailableAdventures} from "../api/adventure";
+import type {CurrencyRateDto} from "../types/CurrencyRateDto";
 
 export default function AvailableAdventuresPage() {
     const [adventures, setAdventures] = useState<AdventureAvailableDto[]>([]);
@@ -33,23 +33,20 @@ export default function AvailableAdventuresPage() {
     return (
         <Box
             sx={{
-                py: { xs: 3, md: 5 },
+                py: {xs: 3, md: 5},
             }}
         >
             <Container maxWidth="lg">
                 {/* Hero-блок */}
-                <Typography variant="h1" color="accentLavender.main" gutterBottom sx={{ mb: 1 }}>
-                    Активные приключения
-                </Typography>
                 <Stack
-                    direction={{ xs: "column", sm: "row" }}
-                    alignItems={{ xs: "flex-start", sm: "center" }}
+                    direction={{xs: "column", sm: "row"}}
+                    alignItems={{xs: "flex-start", sm: "center"}}
                     justifyContent="space-between"
                     spacing={2}
-                    sx={{ mb: 2 }}
+                    sx={{mb: 1}}
                 >
-                    <Typography variant="h4" color="text.secondary" sx={{ maxWidth: 700 }}>
-                        Запишись на одно из приключений Digital Dicebound — выбери игру, DM и подходящее время.
+                    <Typography variant="h1" color="accentLavender.main" gutterBottom sx={{mb: 1}}>
+                        Активные приключения
                     </Typography>
                     <CurrencySelector
                         value={selectedCurrency}
@@ -57,31 +54,41 @@ export default function AvailableAdventuresPage() {
                         options={currencyRates.map(r => r.currency)}
                     />
                 </Stack>
+                <Box>
+                    <Typography variant="h4" color="text.secondary" sx={{maxWidth: 700}}>
+                        Запишись на одно из приключений Digital Dicebound — выбери игру и мастера.
+                    </Typography>
+
+                    <Typography variant="h6" color="text.secondary" sx={{fontStyle: "italic", fontWeight: 400, mt: 1}}>
+                        Все приключения стартуют по набору
+                    </Typography>
+                </Box>
+
 
                 {loading && (
-                    <Box sx={{ display: "flex", justifyContent: "center", py: 8 }}>
-                        <CircularProgress color="secondary" />
+                    <Box sx={{display: "flex", justifyContent: "center", py: 8}}>
+                        <CircularProgress color="secondary"/>
                     </Box>
                 )}
 
                 {error && (
-                    <Alert severity="error" sx={{ mb: 3 }}>
+                    <Alert severity="error" sx={{mb: 3}}>
                         {error}
                     </Alert>
                 )}
 
                 {!loading && !error && (
                     adventures.length === 0 ? (
-                        <Alert severity="info" sx={{ mt: 4 }}>
+                        <Alert severity="info" sx={{mt: 4}}>
                             Пока нет активных приключений с доступными местами.
                         </Alert>
                     ) : (
                         <Grid container spacing={3} justifyContent={"center"}>
                             {adventures.map(adv => (
                                 <Grid
-                                    size={{ xs: 12, sm: 6, md: 4 }}
+                                    size={{xs: 12, sm: 6, md: 4}}
                                     key={adv.adventureId}
-                                    sx={{ height: "100%", display: "flex" }}
+                                    sx={{height: "100%", display: "flex"}}
                                 >
                                     <AdventureCard
                                         adventure={adv}

@@ -1,9 +1,8 @@
-html, body {
-  height: 100%;
+html, body, .App {
+  min-height: 100%;
+  overflow: visible !important;
 }
 
-.App{
+body{
   background: linear-gradient(135deg, #1B1033 0%, #003A41 100%);
-  height: 100%;
-  overflow-y: auto;
 }

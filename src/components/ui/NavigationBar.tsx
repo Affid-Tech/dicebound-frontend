@@ -8,7 +8,8 @@ export default function NavigationBar() {
             position="sticky"
             elevation={2}
             sx={{
-                background: "#1B1033",
+                backgroundColor: "#00000030",
+                backdropFilter: "blur(4px)",
                 color: "#fff",
                 borderRadius: 0,
                 boxShadow: "0 2px 8px 0 rgba(40, 216, 196, 0.08)",
@@ -16,7 +17,7 @@ export default function NavigationBar() {
         >
             <Toolbar sx={{ py: 1, px: 3, display: "flex", justifyContent: "space-between" }}>
                 <Link to="/" style={{ padding: 0, display: "inline-flex" }}>
-                    <img src={"/white-letter-logo.png"} style={{ margin: 0, padding: 0, height: 64}} />
+                    <img alt="Digital Dicebound Logo" src={"/assets/white-letter-logo.png"} style={{ margin: 0, padding: 0, height: 64}} />
                 </Link>
                 <Stack direction="row" spacing={2}>
                     <Button

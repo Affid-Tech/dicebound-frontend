@@ -1,0 +1,24 @@
+/* main.css — собирает все стили проекта */
+
+/* Shoelace тема */
+@import url('https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.13.0/dist/themes/light.css');
+
+/* Base */
+@import './base/variables.css';
+
+/* Layout */
+@import './layout/layout.css';
+@import './layout/components.css';
+
+/* Sections */
+@import './sections/hero.css';
+@import './sections/about.css';
+@import './sections/features.css';
+@import './sections/how-it-works.css';
+@import './sections/for-dms.css';
+@import './sections/why-paid.css';
+@import './sections/schedule.css';
+@import './sections/testimonials.css';
+@import './sections/faq.css';
+@import './sections/final-cta.css';
+@import './sections/footer.css';
