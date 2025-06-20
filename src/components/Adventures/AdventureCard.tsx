@@ -9,7 +9,7 @@ type Props = {
     ratio: number;
 };
 
-export default function AdventureCard({ adventure, currency, ratio }: Props) {
+export default function AdventureCard({ adventure, currency, ratio }: Readonly<Props>) {
     const priceTokens = adventure.priceTokens ?? 0;
     const priceInCurrency = priceTokens ? priceTokens * ratio : null;
 
@@ -23,7 +23,7 @@ export default function AdventureCard({ adventure, currency, ratio }: Props) {
                 minHeight: 350,
             }}
         >
-            {adventure.coverUrl && (<CardMedia component="img" image={adventure.coverUrl}/>)}
+            {adventure.coverUrl && (<CardMedia component="img" image={adventure.coverUrl} sx={{ aspectRatio: "1/1" }}/>)}
             <CardContent sx={{ flexGrow: 1, pb: 1.5 }}>
                 <Stack spacing={1.2}>
                     <Typography variant="h3" color="accentLavender.main">
