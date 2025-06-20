@@ -77,7 +77,7 @@ const LandingPage = () => {
                                 <SlButton variant="default" size="large" href="#for-dms">
                                     🎲 Хочу провести игру
                                 </SlButton>
-                                <SlButton variant="default" size="large" href="#schedule">
+                                <SlButton variant="default" size="large" href="/schedule">
                                     📅 Смотреть расписание
                                 </SlButton>
                             </div>
