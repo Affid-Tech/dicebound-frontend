@@ -59,7 +59,7 @@ export default function AvailableAdventuresPage() {
                         Запишись на одно из приключений Digital Dicebound — выбери игру и мастера.
                     </Typography>
 
-                    <Typography variant="h6" color="text.secondary" sx={{fontStyle: "italic", fontWeight: 400, mt: 1}}>
+                    <Typography variant="h6" color="text.secondary" sx={{fontStyle: "italic", fontWeight: 400, mb: 1}}>
                         Все приключения стартуют по набору
                     </Typography>
                 </Box>
